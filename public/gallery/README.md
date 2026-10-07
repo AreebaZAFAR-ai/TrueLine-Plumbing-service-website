@@ -16,7 +16,7 @@ Every photo on the website lives in this folder.
 
 | File | Where it appears |
 | --- | --- |
-| `videos/hero.mp4`, `videos/hero-mobile.mp4` | Full-screen hero background (landscape clip on desktop, portrait clip on phones) |
+| `videos/hero.mp4` | Full-screen hero background on every page |
 | `videos/a.mp4` | Portrait video (with sound button) below "Plumbing You Can Rely On" |
 | `videos/on-the-job.mp4` | Spare (previous video-section clip) |
 | `videos/*-poster.webp` | Still frame shown before each video plays |

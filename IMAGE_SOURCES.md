@@ -245,7 +245,6 @@ you have the right to use each one commercially (or replace it) before the site 
 | `services/leak-repair.webp` | Reliable Plumbing Services You Can Trust.jpg | Leak Detection & Repair card |
 | `services/water-heaters.webp` | Water Heater Repair & Installation – USA Homes _ Contact us now.jpg | Water Heater Repair card |
 | `videos/hero.mp4` | 7584858-uhd_3840_2160_25fps.mp4 (likely Pexels video 7584858 — unverified) | Hero background (desktop/tablet) |
-| `videos/hero-mobile.mp4` | 6595447-uhd_1440_2560_30fps.mp4 (likely Pexels video 6595447 — unverified) | Hero background (phones) |
 | `videos/on-the-job.mp4` | 8293017-hd_1920_1080_30fps.mp4 (likely Pexels video 8293017 — unverified) | Not currently displayed (spare) |
 | `videos/a.mp4` | a.mp4 (portrait, with music; source unknown — burned-in captions and uniforms suggest another company's promo film, verify rights) | Video section below "Plumbing You Can Rely On" |
 

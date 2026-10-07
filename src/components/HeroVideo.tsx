@@ -4,10 +4,9 @@ import { useEffect, useRef } from "react";
 import { gallery } from "@/config/gallery";
 
 /**
- * Hero background video. Phones get the portrait clip, larger screens
- * the landscape one; the source is chosen on mount so only one clip
- * downloads. The poster shows immediately; with reduced motion the
- * video never loads. Decorative, so hidden from assistive tech.
+ * Hero background video, used by every page's hero. The poster shows
+ * immediately; with reduced motion the video never loads. Decorative,
+ * so hidden from assistive tech.
  */
 export function HeroVideo({ className }: { className?: string }) {
   const ref = useRef<HTMLVideoElement>(null);
@@ -15,11 +14,8 @@ export function HeroVideo({ className }: { className?: string }) {
   useEffect(() => {
     const v = ref.current;
     if (!v) return;
-    const mobile = window.matchMedia("(max-width: 640px)").matches;
-    const clip = mobile ? gallery.videos.heroMobile : gallery.videos.hero;
-    v.poster = clip.poster;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    v.src = clip.src;
+    v.src = gallery.videos.hero.src;
     v.play().catch(() => undefined);
   }, []);
 

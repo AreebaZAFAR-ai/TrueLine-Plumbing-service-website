@@ -13,7 +13,6 @@ export const gallery = {
   /** Background/feature videos (MP4, H.264, no audio) with a poster frame each. */
   videos: {
     hero: { src: "/gallery/videos/hero.mp4", poster: "/gallery/videos/hero-poster.webp" },
-    heroMobile: { src: "/gallery/videos/hero-mobile.mp4", poster: "/gallery/videos/hero-mobile-poster.webp" },
     onTheJob: { src: "/gallery/videos/on-the-job.mp4", poster: "/gallery/videos/on-the-job-poster.webp" },
     /** Portrait clip with music, shown below "Plumbing You Can Rely On". */
     community: { src: "/gallery/videos/a.mp4", poster: "/gallery/videos/a-poster.webp" },
