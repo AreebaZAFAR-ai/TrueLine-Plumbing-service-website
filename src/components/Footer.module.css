@@ -1,0 +1,211 @@
+.footer {
+  position: relative;
+  background: var(--accent);
+  color: #fff;
+  padding-top: clamp(140px, 14vw, 200px);
+  overflow: hidden;
+}
+
+/* Tools hanging from the top edge */
+.tools {
+  position: absolute;
+  top: -24px;
+  right: clamp(16px, 8vw, 140px);
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(10px, 1.6vw, 22px);
+}
+
+.tools svg {
+  width: clamp(28px, 3.4vw, 52px);
+  filter: drop-shadow(0 12px 14px rgba(0, 0, 0, 0.22));
+  transform-origin: 50% 0;
+  animation: sway 6s ease-in-out infinite;
+}
+
+.tools .t1 { animation-delay: -1s; }
+.tools .t2 { animation-delay: -3s; }
+.tools .t3 { animation-delay: -2s; }
+
+.rod {
+  width: 10px;
+  height: clamp(90px, 10vw, 140px);
+  border-radius: 0 0 6px 6px;
+  background: linear-gradient(90deg, #cfd2d6, #fff 45%, #b9bdc2);
+  box-shadow: 0 12px 14px rgba(0, 0, 0, 0.18);
+}
+
+.top {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px 24px;
+  padding-bottom: 48px;
+}
+
+.brand {
+  grid-column: 1 / -1;
+}
+
+.logo :global(svg rect) {
+  fill: #fff;
+}
+
+.logo :global(svg path),
+.logo :global(svg circle) {
+  stroke: var(--accent);
+}
+
+.logo :global(svg circle) {
+  fill: var(--accent);
+}
+
+.brand p {
+  margin-top: 16px;
+  max-width: 36ch;
+  font-size: 0.93rem;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.col h2 {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.col ul {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
+  font-size: 0.93rem;
+  font-weight: 500;
+}
+
+.col a {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+  transition: background-size 0.35s var(--ease);
+}
+
+.col a:hover {
+  background-size: 100% 1px;
+}
+
+.contact {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 18px;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.contactItem > span:last-child,
+.contactItem address {
+  display: grid;
+  min-width: 0;
+  font-style: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.4;
+}
+
+.contactItem small {
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.tile {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: #fff;
+  color: var(--accent);
+  transition: transform 0.35s var(--ease);
+}
+
+a.contactItem:hover .tile {
+  transform: translateY(-3px);
+}
+
+.social {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.social a {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 10px;
+  background: #fff;
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.bottom {
+  padding-block: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  font-size: 0.85rem;
+}
+
+.wordmark {
+  font-size: clamp(5rem, 22vw, 20rem);
+  font-weight: 600;
+  letter-spacing: -0.06em;
+  line-height: 0.8;
+  text-align: center;
+  white-space: nowrap;
+  user-select: none;
+  margin-bottom: -0.04em;
+  background: linear-gradient(180deg, #fff 20%, rgba(255, 255, 255, 0) 95%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@media (min-width: 768px) {
+  .top {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .top {
+    grid-template-columns: 0.9fr 1.1fr 0.9fr 0.8fr 1.5fr;
+  }
+
+  .contact {
+    grid-column: auto;
+  }
+}
+
+@media (min-width: 1280px) {
+  .top {
+    grid-template-columns: 1.3fr 0.85fr 1.1fr 0.85fr 0.8fr 1.5fr;
+  }
+
+  .brand {
+    grid-column: auto;
+  }
+}
+
+@keyframes sway {
+  0%,
+  100% {
+    rotate: -2deg;
+  }
+  50% {
+    rotate: 2deg;
+  }
+}

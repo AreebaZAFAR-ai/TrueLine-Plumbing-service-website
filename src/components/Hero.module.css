@@ -1,0 +1,126 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+  min-height: max(640px, 100svh);
+  color: #fff;
+  background: var(--ink);
+  overflow: hidden;
+}
+
+.media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  animation: settle 2.4s var(--ease) both;
+}
+
+.img {
+  object-fit: cover;
+  object-position: 68% 50%;
+}
+
+.shade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.45) 45%, rgba(0, 0, 0, 0.08) 80%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 40%);
+}
+
+.content {
+  padding-top: 140px;
+  padding-bottom: clamp(56px, 9vh, 110px);
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  font-size: 0.9rem;
+  font-weight: 500;
+  animation: rise 0.9s var(--ease) 0.1s both;
+}
+
+.title {
+  margin-top: 22px;
+  font-size: var(--fs-display);
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: -0.045em;
+  max-width: 15ch;
+}
+
+.line {
+  display: block;
+}
+
+.word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+}
+
+.word > span {
+  display: inline-block;
+  animation: word 1s var(--ease) both;
+  animation-delay: calc(var(--i) * 70ms + 150ms);
+}
+
+.lead {
+  margin-top: 22px;
+  max-width: 50ch;
+  font-size: var(--fs-lead);
+  color: rgba(255, 255, 255, 0.86);
+  animation: rise 0.9s var(--ease) 0.6s both;
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 34px;
+  animation: rise 0.9s var(--ease) 0.72s both;
+}
+
+.ctas svg {
+  color: var(--ink);
+}
+
+@media (max-width: 640px) {
+  .img {
+    object-position: 74% 50%;
+  }
+
+  .shade {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.55) 55%, rgba(0, 0, 0, 0.25) 100%);
+  }
+
+  .ctas :global(.btn) {
+    flex: 1 1 100%;
+  }
+}
+
+@keyframes settle {
+  from {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes word {
+  from {
+    transform: translateY(105%);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}

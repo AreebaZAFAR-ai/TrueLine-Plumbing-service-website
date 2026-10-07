@@ -1,0 +1,97 @@
+.section {
+  padding-top: 0;
+}
+
+.band {
+  --p: 0;
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  width: calc(100% - (1 - var(--p)) * 2 * var(--gutter));
+  margin-inline: auto;
+  padding-block: clamp(32px, 5vw, 64px);
+  border-radius: calc((1 - var(--p)) * 28px);
+  overflow: hidden;
+  background: var(--ink);
+}
+
+/* Blurred, darkened poster frame fills the band behind the portrait clip */
+.band::before {
+  content: "";
+  position: absolute;
+  inset: -40px;
+  z-index: -2;
+  background: var(--poster) center / cover no-repeat;
+  filter: blur(28px) saturate(1.1);
+  transform: scale(1.1);
+}
+
+.band::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.player {
+  position: relative;
+  height: min(78vh, 760px);
+  aspect-ratio: 9 / 16;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.6);
+}
+
+.video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.controls {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  display: flex;
+  gap: 10px;
+}
+
+.control {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  transition: transform 0.35s var(--ease), background-color 0.3s;
+}
+
+.control:first-child {
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--ink);
+}
+
+.control:hover {
+  transform: scale(1.08);
+}
+
+@media (max-width: 640px) {
+  .band {
+    padding: 20px;
+  }
+
+  .player {
+    height: auto;
+    width: min(100%, 420px);
+  }
+
+  .control {
+    width: 46px;
+    height: 46px;
+  }
+}

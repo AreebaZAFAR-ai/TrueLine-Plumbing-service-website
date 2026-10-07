@@ -1,0 +1,79 @@
+.grid {
+  display: grid;
+  gap: 10px;
+  list-style: none;
+}
+
+.card {
+  border-radius: 16px;
+  border: 1px solid var(--line-strong);
+  background: #fff;
+  transition: border-color 0.3s, box-shadow 0.4s var(--ease);
+}
+
+.card:hover {
+  border-color: rgba(17, 17, 17, 0.28);
+}
+
+.open {
+  box-shadow: 0 16px 34px -26px rgba(17, 17, 17, 0.35);
+}
+
+.btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  text-align: left;
+}
+
+.num {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.title {
+  flex: 1;
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.plus {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  transition: transform 0.45s var(--ease), background-color 0.3s, color 0.3s;
+}
+
+.open .plus {
+  transform: rotate(135deg);
+  background: var(--accent);
+  color: #fff;
+}
+
+.body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s var(--ease);
+}
+
+.open .body {
+  grid-template-rows: 1fr;
+}
+
+.body > div {
+  overflow: hidden;
+}
+
+.body p {
+  padding: 0 20px 20px 52px;
+  color: var(--muted);
+  font-size: 0.94rem;
+}

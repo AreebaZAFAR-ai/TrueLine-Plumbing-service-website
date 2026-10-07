@@ -1,0 +1,216 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+  min-height: max(620px, 92svh);
+  color: #fff;
+  background: var(--ink);
+  overflow: hidden;
+}
+
+.media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  animation: settle 2.4s var(--ease) both;
+}
+
+.img {
+  object-fit: cover;
+  object-position: 68% 50%;
+}
+
+.shade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.2) 100%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0) 45%);
+}
+
+.content {
+  padding-top: 130px;
+  padding-bottom: clamp(64px, 10vh, 112px);
+}
+
+.crumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.72);
+  animation: rise 0.8s var(--ease) both;
+}
+
+.crumbs li {
+  display: inline-flex;
+  gap: 6px;
+}
+
+.crumbs a {
+  transition: color 0.25s;
+}
+
+.crumbs a:hover {
+  color: #fff;
+}
+
+.crumbs [aria-current] {
+  color: #fff;
+}
+
+.sep {
+  opacity: 0.5;
+}
+
+.grid {
+  display: grid;
+  gap: 40px;
+  margin-top: clamp(28px, 5vh, 56px);
+  align-items: end;
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  font-size: 0.9rem;
+  font-weight: 500;
+  animation: rise 0.9s var(--ease) 0.1s both;
+}
+
+.title {
+  margin-top: 22px;
+  font-size: var(--fs-display);
+  line-height: 1.06;
+  letter-spacing: -0.045em;
+  max-width: 14ch;
+}
+
+.word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+}
+
+.word > span {
+  display: inline-block;
+  animation: word 1s var(--ease) both;
+  animation-delay: calc(var(--i) * 60ms + 150ms);
+}
+
+.hl {
+  color: var(--accent);
+}
+
+.lead {
+  margin-top: 22px;
+  max-width: 52ch;
+  font-size: var(--fs-lead);
+  color: rgba(255, 255, 255, 0.86);
+  animation: rise 0.9s var(--ease) 0.55s both;
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 34px;
+  animation: rise 0.9s var(--ease) 0.7s both;
+}
+
+.ctas :global(.btn-light) svg {
+  color: var(--ink);
+}
+
+.aside {
+  animation: rise 1s var(--ease) 0.85s both;
+}
+
+.scrollCue {
+  position: absolute;
+  left: 50%;
+  bottom: 22px;
+  display: none;
+  width: 26px;
+  height: 42px;
+  margin-left: -13px;
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  border-radius: 999px;
+}
+
+.scrollCue span {
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  width: 4px;
+  height: 8px;
+  margin-left: -2px;
+  border-radius: 2px;
+  background: #fff;
+  animation: cue 1.8s var(--ease) infinite;
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr) 360px;
+    gap: 64px;
+  }
+
+  .scrollCue {
+    display: block;
+  }
+}
+
+@media (max-width: 640px) {
+  .img {
+    object-position: 74% 50%;
+  }
+
+  .shade {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.6) 55%, rgba(0, 0, 0, 0.35) 100%);
+  }
+
+  .ctas :global(.btn) {
+    flex: 1 1 100%;
+  }
+}
+
+@keyframes settle {
+  from {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes word {
+  from {
+    transform: translateY(105%);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+
+@keyframes cue {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}

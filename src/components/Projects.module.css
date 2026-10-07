@@ -1,0 +1,124 @@
+.viewport {
+  overflow: hidden;
+}
+
+.track {
+  list-style: none;
+  display: flex;
+  width: max-content;
+  animation: marquee 48s linear infinite;
+}
+
+.viewport:hover .track,
+.viewport:focus-within .track {
+  animation-play-state: paused;
+}
+
+/* margin (not gap) keeps both halves identical so -50% loops seamlessly */
+.item {
+  flex: 0 0 auto;
+  margin-right: 18px;
+  width: clamp(260px, 34vw, 480px);
+}
+
+/* Alternate wide/narrow tiles for rhythm */
+.item:nth-child(3n + 2) {
+  width: clamp(220px, 24vw, 340px);
+}
+
+.figure {
+  position: relative;
+  height: clamp(300px, 30vw, 400px);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface-2);
+}
+
+.figure img {
+  object-fit: cover;
+  transition: transform 1.2s var(--ease);
+}
+
+.figure::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 45%);
+  opacity: 0;
+  transition: opacity 0.5s var(--ease);
+}
+
+.caption {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 18px;
+  z-index: 1;
+  display: grid;
+  gap: 6px;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s var(--ease), transform 0.6s var(--ease);
+}
+
+.cat {
+  justify-self: start;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.item:hover .figure img {
+  transform: scale(1.05);
+}
+
+.item:hover .figure::after,
+.item:hover .caption {
+  opacity: 1;
+  transform: none;
+}
+
+/* Touch screens have no hover: always show captions */
+@media (hover: none) {
+  .figure::after,
+  .caption {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .viewport {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+
+  .track {
+    animation: none;
+  }
+
+  .item {
+    scroll-snap-align: start;
+  }
+
+  .item[aria-hidden="true"] {
+    display: none;
+  }
+}

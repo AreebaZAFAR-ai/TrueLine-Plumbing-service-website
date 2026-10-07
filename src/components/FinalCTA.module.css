@@ -1,0 +1,112 @@
+.wrap {
+  padding-block: var(--section);
+}
+
+/*
+ * A preceding plain .section already supplies the gap — don't double it.
+ * Sections with a coloured background add `data-band` to keep the gap.
+ */
+:global(.section):not([data-band]) + .wrap {
+  padding-top: 0;
+}
+
+.frame {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  min-height: 460px;
+  max-width: calc(var(--container) + 80px);
+  width: calc(100% - var(--gutter) * 2);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #5a120a;
+  text-align: center;
+}
+
+.img {
+  z-index: -2;
+  object-fit: cover;
+  object-position: 50% 35%;
+  filter: grayscale(1) contrast(1.05);
+}
+
+/* Warm red duotone over the black-and-white photo */
+.frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(rgba(150, 28, 12, 0.55), rgba(150, 28, 12, 0.55)),
+    radial-gradient(ellipse at 50% 45%, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.55));
+  mix-blend-mode: multiply;
+}
+
+.content {
+  display: grid;
+  justify-items: center;
+  padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 64px);
+  color: #fff;
+}
+
+.title {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 1.06;
+}
+
+.text {
+  margin-top: 20px;
+  max-width: 54ch;
+  font-size: var(--fs-lead);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 32px;
+}
+
+.ctas svg {
+  color: var(--ink);
+}
+
+.toolLeft,
+.toolRight {
+  position: absolute;
+  bottom: -60px;
+  width: clamp(54px, 7vw, 100px);
+  pointer-events: none;
+  filter: drop-shadow(0 16px 20px rgba(0, 0, 0, 0.4));
+  display: none;
+}
+
+.toolLeft {
+  left: 5%;
+  transform: rotate(28deg);
+}
+
+.toolRight {
+  right: 6%;
+  transform: rotate(-30deg);
+}
+
+@media (min-width: 900px) {
+  .toolLeft,
+  .toolRight {
+    display: block;
+  }
+}
+
+@media (max-width: 640px) {
+  .ctas {
+    width: 100%;
+  }
+
+  .ctas :global(.btn) {
+    flex: 1 1 100%;
+  }
+}

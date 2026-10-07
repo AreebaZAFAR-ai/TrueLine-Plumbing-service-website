@@ -1,0 +1,399 @@
+/* Shared section styles for the Services, About, How It Works and Service Areas pages. */
+
+.tinted {
+  background: var(--panel);
+}
+
+.dark {
+  background: var(--ink);
+  color: #fff;
+}
+
+.splitHead {
+  max-width: none;
+  display: grid;
+  gap: 18px;
+}
+
+.splitHead :global(.lead) {
+  margin-top: 0;
+}
+
+.leadDark {
+  color: var(--on-dark-muted);
+}
+
+.leadGap {
+  margin-top: 18px;
+}
+
+/* Check list (sectors) */
+.checks {
+  display: grid;
+  gap: 10px;
+  list-style: none;
+}
+
+.checks li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-weight: 500;
+  font-size: 0.97rem;
+}
+
+.checks li > span {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  margin-top: 2px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ---------------- Services: sectors ---------------- */
+.sectors {
+  display: grid;
+  gap: 20px;
+}
+
+.sector {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  border-radius: var(--radius-lg);
+  background: #fff;
+  border: 1px solid var(--line);
+}
+
+.sectorMedia {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: calc(var(--radius-lg) - 8px);
+  overflow: hidden;
+}
+
+.sectorMedia img {
+  object-fit: cover;
+  transition: transform 1.1s var(--ease);
+}
+
+.sector:hover .sectorMedia img {
+  transform: scale(1.05);
+}
+
+.sectorTag {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: #fff;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.sectorBody {
+  display: grid;
+  gap: 22px;
+  justify-items: start;
+  padding: clamp(18px, 3vw, 28px) clamp(10px, 2vw, 18px) clamp(14px, 2vw, 18px);
+}
+
+.sectorBody > p {
+  color: var(--muted);
+  max-width: 52ch;
+}
+
+/* ---------------- About: story ---------------- */
+.story {
+  display: grid;
+  gap: 48px;
+  align-items: center;
+}
+
+.collage {
+  position: relative;
+  max-width: 520px;
+  aspect-ratio: 1 / 1.05;
+}
+
+.imgA,
+.imgB {
+  position: absolute;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.imgA {
+  left: 0;
+  top: 0;
+  width: 66%;
+  height: 88%;
+}
+
+.imgB {
+  right: 0;
+  bottom: 0;
+  width: 50%;
+  height: 62%;
+  border: 8px solid #fff;
+  border-radius: calc(var(--radius-lg) + 4px);
+}
+
+.imgA img,
+.imgB img {
+  object-fit: cover;
+}
+
+.prose {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+  max-width: 58ch;
+  color: var(--muted);
+  font-size: 1.04rem;
+}
+
+.prose p:first-child {
+  font-size: clamp(1.12rem, 1.5vw, 1.28rem);
+  line-height: 1.5;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: clamp(56px, 8vw, 96px);
+  border-top: 1px solid var(--line-strong);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 6px;
+  padding: 26px 16px 0 0;
+}
+
+.stat dd {
+  font-size: clamp(2.2rem, 4.6vw, 3.6rem);
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.stat dt {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.statsNote {
+  margin-top: 18px;
+}
+
+/* ---------------- About: values / How it works: promises ---------------- */
+.values,
+.promises {
+  display: grid;
+  gap: 16px;
+  list-style: none;
+}
+
+.value {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: clamp(22px, 2.6vw, 30px);
+  border-radius: var(--radius);
+  background: var(--ink-2);
+  border: 1px solid var(--line-dark);
+  transition: background-color 0.4s var(--ease), transform 0.5s var(--ease);
+}
+
+.value:hover {
+  background: var(--ink-3);
+  transform: translateY(-4px);
+}
+
+.valueTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+
+.valueIcon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--accent);
+  color: #fff;
+}
+
+.valueNum {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.value h3,
+.promise h3 {
+  font-size: var(--fs-h3);
+}
+
+.value p {
+  color: var(--on-dark-muted);
+  font-size: 0.95rem;
+}
+
+/* White band so it doesn't merge with the grey "From First Call To Fixed" panel above. */
+.promisesSection {
+  padding-top: clamp(96px, 11vw, 144px);
+}
+
+.promise {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: clamp(22px, 2.6vw, 28px);
+  border-radius: var(--radius);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease), background-color 0.4s;
+}
+
+.promise:hover {
+  transform: translateY(-4px);
+  background: #fff;
+  box-shadow: 0 22px 44px -24px rgba(17, 17, 17, 0.25);
+}
+
+.promise .valueIcon {
+  margin-bottom: 12px;
+  background: #fff;
+  color: var(--accent);
+  transition: background-color 0.4s var(--ease);
+}
+
+.promise:hover .valueIcon {
+  background: var(--accent-soft);
+}
+
+.promise p {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* ---------------- Service areas: services everywhere ---------------- */
+.everywhere {
+  display: grid;
+  gap: 40px;
+}
+
+.chips {
+  display: grid;
+  gap: 10px;
+  list-style: none;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 18px 10px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  font-weight: 500;
+  transition: background-color 0.3s, border-color 0.3s, transform 0.4s var(--ease);
+}
+
+.chip > svg:last-child {
+  margin-left: auto;
+  color: var(--accent);
+  transition: transform 0.35s var(--ease);
+}
+
+.chip:hover {
+  background: #fff;
+  border-color: var(--line-strong);
+  transform: translateX(4px);
+}
+
+.chip:hover > svg:last-child {
+  transform: translateX(3px);
+}
+
+.chipIcon {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* ---------------- Breakpoints ---------------- */
+@media (min-width: 640px) {
+  .values,
+  .promises,
+  .chips {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .stat + .stat {
+    padding-left: 24px;
+    border-left: 1px solid var(--line);
+  }
+}
+
+@media (min-width: 1024px) {
+  .splitHead {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
+    align-items: end;
+    gap: 48px;
+  }
+
+  .sectors {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .story {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 80px;
+  }
+
+  .values,
+  .promises {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .everywhere {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 80px;
+    align-items: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .stat:nth-child(even) {
+    padding-left: 18px;
+    border-left: 1px solid var(--line);
+  }
+}

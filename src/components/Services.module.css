@@ -1,0 +1,140 @@
+.grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+.grid > li {
+  min-width: 0;
+}
+
+.card {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 12px 22px;
+  border-radius: var(--radius);
+  background: var(--card);
+  border: 1px solid var(--line);
+  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease), background-color 0.4s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  background: #fff;
+  box-shadow: 0 24px 50px -24px rgba(17, 17, 17, 0.22);
+}
+
+.media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--surface-2);
+}
+
+.media img {
+  object-fit: cover;
+  transition: transform 1.1s var(--ease);
+}
+
+.card:hover .media img {
+  transform: scale(1.07);
+}
+
+.icon {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  margin: -42px 0 0 12px;
+  border-radius: 14px;
+  background: #fff;
+  color: var(--accent);
+  box-shadow: 0 6px 18px -8px rgba(17, 17, 17, 0.25);
+  transition: background-color 0.4s var(--ease), color 0.4s var(--ease);
+}
+
+.card:hover .icon {
+  background: var(--accent);
+  color: #fff;
+}
+
+.title {
+  margin: 22px 10px 0;
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.text {
+  flex: 1;
+  margin: 10px 10px 0;
+  color: var(--muted);
+  font-size: 0.93rem;
+  line-height: 1.55;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 26px 10px 0;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--accent);
+}
+
+/* Whole card clickable */
+.link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: var(--radius);
+}
+
+.arrow {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  transition: transform 0.45s var(--ease);
+}
+
+.card:hover .arrow {
+  transform: rotate(-45deg);
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
+/* All eight services: 2 columns until there's room for an even 4 × 2. */
+@media (min-width: 1024px) {
+  .gridAll {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .gridAll {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

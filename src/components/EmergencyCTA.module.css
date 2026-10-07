@@ -1,0 +1,126 @@
+.wrap {
+  padding-top: var(--section);
+}
+
+.band {
+  position: relative;
+  isolation: isolate;
+  background: var(--accent);
+  color: #fff;
+  overflow: hidden;
+}
+
+/* Halftone dots fading out from the top-left corner */
+.dots {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.35) 1.6px, transparent 1.8px);
+  background-size: 14px 14px;
+  -webkit-mask-image: radial-gradient(circle at 0% 0%, #000 0%, transparent 38%);
+  mask-image: radial-gradient(circle at 0% 0%, #000 0%, transparent 38%);
+}
+
+.inner {
+  position: relative;
+  padding-block: clamp(56px, 8vw, 104px);
+}
+
+.copy {
+  max-width: 560px;
+}
+
+.clock {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+}
+
+.title {
+  margin-top: 22px;
+  font-size: clamp(2.1rem, 4.4vw, 3.6rem);
+  line-height: 1.06;
+}
+
+.text {
+  margin-top: 18px;
+  max-width: 46ch;
+  font-size: var(--fs-lead);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.call {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 32px;
+  padding: 16px 26px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--accent);
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+
+.call:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px -14px rgba(0, 0, 0, 0.35);
+}
+
+.call svg:last-child {
+  transition: transform 0.35s var(--ease);
+}
+
+.call:hover svg:last-child {
+  transform: translateX(4px);
+}
+
+.number {
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: none;
+  color: var(--muted);
+}
+
+.media {
+  position: relative;
+  height: 320px;
+  margin: 0 var(--gutter) var(--gutter);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.media img {
+  object-fit: cover;
+  /* Keep the plumber and homeowner (right of frame) in the crop. */
+  object-position: 72% 35%;
+}
+
+@media (min-width: 1024px) {
+  .media {
+    position: absolute;
+    top: -12%;
+    right: -6%;
+    bottom: -12%;
+    width: 52%;
+    height: auto;
+    margin: 0;
+    border-radius: 50%;
+  }
+
+  .copy {
+    max-width: 48%;
+  }
+}
+
+@media (max-width: 480px) {
+  .number {
+    display: none;
+  }
+}

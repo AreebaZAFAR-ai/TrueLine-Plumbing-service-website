@@ -1,0 +1,124 @@
+.frame {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--surface-2);
+  cursor: zoom-in;
+}
+
+.frame img {
+  object-fit: cover;
+  transform-origin: var(--x, 50%) var(--y, 50%);
+  transition: transform 0.8s var(--ease);
+}
+
+.frame:hover img {
+  transform: scale(1.12);
+}
+
+.zoom {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: #fff;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.frame:hover .zoom {
+  background: var(--accent);
+  color: #fff;
+}
+
+.dialog {
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: clamp(16px, 4vw, 48px);
+  border: 0;
+  background: transparent;
+}
+
+.dialog::backdrop {
+  background: rgba(10, 10, 10, 0.9);
+}
+
+.dialog[open] {
+  display: grid;
+  animation: zoomIn 0.45s var(--ease) both;
+}
+
+.dialog[open]::backdrop {
+  animation: fadeIn 0.35s ease both;
+}
+
+.full {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.full img {
+  object-fit: contain;
+}
+
+.full figcaption {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.close {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--ink);
+  transition: background-color 0.3s, color 0.3s, transform 0.4s var(--ease);
+}
+
+.close:hover {
+  background: var(--accent);
+  color: #fff;
+  transform: rotate(90deg);
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}

@@ -1,0 +1,56 @@
+/* Stacked feature cards shown beside the DetailHero title. */
+.highlights {
+  display: grid;
+  gap: 10px;
+  list-style: none;
+}
+
+.highlights li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px 14px 14px;
+  border-radius: 18px;
+  background: #fff;
+  color: var(--text);
+  box-shadow: 0 20px 40px -24px rgba(0, 0, 0, 0.5);
+  animation: slideIn 0.8s var(--ease) both;
+  animation-delay: calc(var(--i) * 110ms + 0.9s);
+  transition: transform 0.4s var(--ease);
+}
+
+.highlights li:hover {
+  transform: translateX(-6px);
+}
+
+.highlights strong {
+  display: block;
+  font-size: 0.98rem;
+  letter-spacing: -0.02em;
+}
+
+.highlights small {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.84rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.hlIcon {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+}

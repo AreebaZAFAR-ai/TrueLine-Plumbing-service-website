@@ -1,0 +1,229 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  padding: 14px var(--gutter) 0;
+  pointer-events: none;
+}
+
+.bar {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: calc(var(--container) + 40px);
+  margin-inline: auto;
+  padding: 10px 10px 10px 20px;
+  border-radius: 999px;
+  background: transparent;
+  transition: background-color 0.4s var(--ease), box-shadow 0.4s var(--ease), max-width 0.5s var(--ease);
+}
+
+.scrolled .bar,
+.isOpen .bar {
+  background: #fff;
+  box-shadow: 0 10px 30px -14px rgba(17, 17, 17, 0.25);
+  max-width: 1120px;
+}
+
+.brand {
+  flex-shrink: 0;
+  border-radius: 10px;
+}
+
+.nav {
+  display: none;
+}
+
+.nav > ul {
+  display: flex;
+  gap: 2px;
+  list-style: none;
+}
+
+/* Top-level links only — the dropdown has its own styles below. */
+.top {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  padding: 8px 12px;
+  font-size: 0.98rem;
+  font-weight: 500;
+  color: #fff;
+  transition: color 0.25s;
+}
+
+.top::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 4px;
+  height: 1.5px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s var(--ease);
+}
+
+.top:hover::after,
+.top[aria-current="page"]::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.scrolled .top {
+  color: var(--text);
+}
+
+.scrolled .top:hover,
+.scrolled .top[aria-current="page"] {
+  color: var(--accent);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cta {
+  min-height: 46px;
+  padding: 0 22px;
+  font-size: 0.95rem;
+}
+
+.toggle {
+  position: relative;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--ink);
+  display: grid;
+  place-content: center;
+  gap: 6px;
+}
+
+.toggle span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: #fff;
+  transition: transform 0.35s var(--ease);
+}
+
+.isOpen .toggle span:first-child {
+  transform: translateY(4px) rotate(45deg);
+}
+
+.isOpen .toggle span:last-child {
+  transform: translateY(-4px) rotate(-45deg);
+}
+
+/* Mobile panel */
+.panel {
+  pointer-events: auto;
+  position: fixed;
+  inset: 80px 10px auto;
+  max-height: calc(100dvh - 92px);
+  overflow-y: auto;
+  padding: 12px 20px 20px;
+  border-radius: var(--radius-lg);
+  background: #fff;
+  box-shadow: 0 30px 60px -20px rgba(17, 17, 17, 0.35);
+  animation: panel-in 0.45s var(--ease);
+}
+
+.panel[hidden] {
+  display: none;
+}
+
+.panel ul {
+  list-style: none;
+}
+
+.panel > nav > ul > li {
+  border-bottom: 1px solid var(--line);
+  animation: item-in 0.5s var(--ease) both;
+  animation-delay: calc(var(--i) * 45ms + 80ms);
+}
+
+.panel > nav > ul > li > a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 4px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.panel li a[aria-current="page"] {
+  color: var(--accent);
+}
+
+.panel li a svg {
+  color: var(--accent);
+}
+
+.panelFoot {
+  display: grid;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.panelFoot :global(.btn-ghost) {
+  border: 1px solid var(--line-strong);
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.98);
+  }
+}
+
+@keyframes item-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@media (max-width: 420px) {
+  .cta {
+    display: none;
+  }
+}
+
+/* Small laptops: tighten links so the bar never wraps. */
+@media (min-width: 1024px) and (max-width: 1120px) {
+  .bar {
+    gap: 8px;
+  }
+
+  .top {
+    padding-inline: 9px;
+    font-size: 0.94rem;
+  }
+
+  .top::after {
+    left: 9px;
+    right: 9px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .nav {
+    display: block;
+  }
+
+  .toggle,
+  .panel {
+    display: none;
+  }
+}
