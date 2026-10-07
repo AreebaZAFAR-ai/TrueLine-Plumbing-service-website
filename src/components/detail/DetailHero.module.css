@@ -169,12 +169,24 @@
 }
 
 @media (max-width: 640px) {
+  /* Landscape clip in a top band on phones; see Hero.module.css. */
+  .media {
+    bottom: auto;
+    height: 62svh;
+  }
+
   .img {
-    object-position: 74% 50%;
+    object-position: 60% 50%;
   }
 
   .shade {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.6) 55%, rgba(0, 0, 0, 0.35) 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.45) 0,
+      rgba(0, 0, 0, 0.2) 22svh,
+      rgba(17, 17, 17, 0.65) 42svh,
+      var(--ink) 62svh
+    );
   }
 
   .ctas :global(.btn) {
